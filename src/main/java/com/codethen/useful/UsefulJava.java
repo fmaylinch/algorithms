@@ -14,6 +14,8 @@ public class UsefulJava {
 
     public static void main(String... args) {
 
+        ensureAssertionsEnabled();
+
         lists();
         stack_queue_heap();
         maps();
@@ -115,6 +117,15 @@ public class UsefulJava {
         assert b.getValue() == 6;
         b.setValue(1);
         assert b.getValue() == 1;
+    }
+
+    public static void ensureAssertionsEnabled() {
+        try {
+            assert false : "this must fail";
+            throw new RuntimeException("Assertions are not enabled. Add -ea in VM options.");
+        } catch (AssertionError e) {
+            // expected
+        }
     }
 }
 

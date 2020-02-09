@@ -1,10 +1,14 @@
 package com.codethen.algorithms.known;
 
+import com.codethen.useful.UsefulJava;
+
 import java.util.Arrays;
 
 public class BinarySearch {
 
     public static void main(String... args) {
+
+        UsefulJava.ensureAssertionsEnabled();
 
         int[] array = {5, 3, 234, 23, 1, -23, 34, 3, -99};
         Arrays.sort(array);
