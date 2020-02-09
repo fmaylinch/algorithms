@@ -11,6 +11,8 @@ import java.util.function.Supplier
  */
 fun main() {
 
+    UsefulJava.ensureAssertionsEnabled()
+
     lists()
     stack_queue_heap()
     maps()
