@@ -13,6 +13,7 @@ public class BinarySearch {
         int[] numbers = {-200, -98, -99, 1, 3, 4, 5, 233, 234, 235, 300};
 
         for (int n : numbers) {
+            // System.out.println("Looking for " + n);
             final int expected = Arrays.binarySearch(array, n);
             final int actual = myBinarySearch(array, n);
             if (actual != expected) {
@@ -28,6 +29,7 @@ public class BinarySearch {
     private static int myBinarySearch(int[] array, int from, int to, int key) {
 
         while (from < to) {
+            // System.out.println("from = " + from + ", to = " + to);
             int mid = (to + from) / 2;
             if (array[mid] < key) {
                 from = mid+1;
@@ -38,6 +40,14 @@ public class BinarySearch {
             }
         }
 
-        return -from -1;
+        // System.out.println("from = " + from + ", to = " + to);
+
+        // TODO: Can we simplify this?
+        if (from < array.length && array[from] == key) {
+            return from;
+        } else {
+            final boolean placeAfterFrom = from < array.length && array[from] < key;
+            return -(from + (placeAfterFrom ? 1 : 0) + 1);
+        }
     }
 }
