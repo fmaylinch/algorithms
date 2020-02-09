@@ -1,4 +1,4 @@
-package com.codethen.algorithms
+package com.codethen.useful
 
 import java.util.*
 import java.util.concurrent.ThreadLocalRandom

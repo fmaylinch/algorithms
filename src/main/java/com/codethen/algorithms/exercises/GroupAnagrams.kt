@@ -1,4 +1,4 @@
-package com.codethen.algorithms
+package com.codethen.algorithms.exercises
 
 fun main() {
     groupAnagrams(listOf("eat","tea","tan","ate","nat","raz","bat","zar"))

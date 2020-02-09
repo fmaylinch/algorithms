@@ -1,4 +1,4 @@
-package com.codethen.algorithms
+package com.codethen.algorithms.exercises
 
 fun main() {
     println( threeSumSorted(listOf(2, 2, -4, 2, 1, 2, -3)) )
