@@ -104,8 +104,6 @@ def maps():
 
     map1: Dict[str, int] = {}
     mapOrdered: Dict[str, int] = OrderedDict()
-    set1: Set[str] = set()
-    # setSorted1 = SortedDict()
     map2: Dict[str, int] = {"one": 1, "two": 2}
 
     x3 = map2["two"]
@@ -128,6 +126,18 @@ def maps():
         print(v)
     for k, v in map1.items():
         print(k, v)
+
+
+def sets():
+
+    set1: Set[str] = set()
+    # setSorted1 = SortedDict()
+
+    set1.add(3)
+    set1.add(2)
+    set1.add(1)
+    set1.add(3)
+    assert set1 == {1, 2, 3}
 
 
 def classes():
@@ -207,5 +217,6 @@ class HeapBy(Heap):
 lists()
 stack_queue_heap()
 maps()
+sets()
 classes()
 

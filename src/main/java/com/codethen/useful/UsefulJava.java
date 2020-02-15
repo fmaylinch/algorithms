@@ -1,8 +1,10 @@
 package com.codethen.useful;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toMap;
 
@@ -19,6 +21,7 @@ public class UsefulJava {
         lists();
         stack_queue_heap();
         maps();
+        sets();
         classes();
     }
 
@@ -26,8 +29,8 @@ public class UsefulJava {
 
         // Creation
         final List<Integer> list = new ArrayList<>();
-        final List<Integer> listFixed1 = Arrays.asList(10, 11, 12);
-        final List<Integer> list2 = new ArrayList<>(Arrays.asList(10, 11, 12));
+        final List<Integer> listFixed1 = asList(10, 11, 12);
+        final List<Integer> list2 = new ArrayList<>(asList(10, 11, 12));
 
         // Basic usage
         list2.add(13);
@@ -90,8 +93,6 @@ public class UsefulJava {
         // Creation
         final Map<String, Integer> map = new HashMap<>();
         final Map<String, Integer> mapOrdered1 = new LinkedHashMap<>();
-        final Set<String> set1 = new HashSet<>();
-        final Set<String> setSorted1 = new TreeSet<>();
 
         // Basic usage
         map.put("one", 1);
@@ -107,6 +108,16 @@ public class UsefulJava {
         assert map3.get("a") == 13;
         map3.merge("b", 10, Integer::sum); // (a,b) -> a+b
         assert map3.get("b") == 10;
+    }
+
+    private static void sets() {
+
+        final Set<Integer> set1 = new HashSet<>(asList(3, 2, 3, 1, 2, 3));
+        final Set<Integer> set2 = new HashSet<>(asList(1, 2, 3));
+        assert set1.equals(set2);
+
+        final Set<Integer> setSorted = new TreeSet<>(asList(3, 2, 3, 1, 2, 3));
+        assert new ArrayList<>(setSorted).equals(asList(1, 2, 3));
     }
 
     private static void classes() {

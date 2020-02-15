@@ -16,6 +16,7 @@ fun main() {
     lists()
     stack_queue_heap()
     maps()
+    sets()
     classes()
     interfaces()
 }
@@ -89,8 +90,6 @@ private fun maps() {
 
     val map = mutableMapOf<String, Int>()
     val mapOrdered = linkedMapOf<String, Int>()
-    val set = mutableSetOf<String>()
-    val setSorted = sortedSetOf<String>()
     val map2 = mutableMapOf("one" to 1, "two" to 2)
 
     val x3 = map2["two"]
@@ -112,6 +111,15 @@ private fun maps() {
 
     map3.merge("b", 10, Int::plus) // { a, b -> a + b }
     assert(map3["b"] == 10)
+}
+
+private fun sets() {
+
+    val set1: Set<Int> = setOf(3, 2, 3, 1, 2, 3)
+    assert(set1 == setOf(1, 2, 3))
+
+    val setSorted = sortedSetOf(3, 2, 3, 1, 2, 3)
+    assert(setSorted.toList() == listOf(1, 2, 3))
 }
 
 open class BoxKotlin(var value: Int) {
