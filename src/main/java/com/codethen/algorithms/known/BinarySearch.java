@@ -27,7 +27,7 @@ public class BinarySearch {
     }
 
     private static int myBinarySearch(int[] array, int key) {
-        return myBinarySearch(array, 0, array.length, key);
+        return myBinarySearch(array, 0, array.length-1, key);
     }
 
     private static int myBinarySearch(int[] array, int from, int to, int key) {
@@ -46,12 +46,11 @@ public class BinarySearch {
 
         // System.out.println("from = " + from + ", to = " + to);
 
-        // TODO: Can we simplify this?
-        if (from < array.length && array[from] == key) {
+        if (array[from] == key) {
             return from;
         } else {
-            final boolean placeAfterFrom = from < array.length && array[from] < key;
-            return -(from + (placeAfterFrom ? 1 : 0) + 1);
+            final int insertIndex = from + (array[from] < key ? 1 : 0);
+            return -insertIndex -1; // "encode" insert index
         }
     }
 }
