@@ -5,13 +5,15 @@ import com.codethen.useful.UsefulJava;
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
+import static com.codethen.algorithms.known.Util.swap;
+
 public class QuickSort {
 
     public static void main(String... args) {
 
         UsefulJava.ensureAssertionsEnabled();
 
-        int[] array = {5, 3, 234, 23, 1, -23, 34, 3, -99};
+        int[] array = {1, 1, 2, 2, 2, 1, 1, 1, 2, 1, 1, 2, 1, 1};
         int[] arrayCopy = Arrays.copyOf(array, array.length);
 
         quickSort(array);
@@ -46,13 +48,39 @@ public class QuickSort {
 
         swap(array, swapIndex, end);
 
-        quickSort(array, start, swapIndex-1);
-        quickSort(array, swapIndex+1, end);
+        /** Skip repeated pivot numbers. See {@link Quick} for a better solution. */
+        final int endLeft = skipRepeatedLeft(array, swapIndex, start);
+        final int startRight = skipRepeatedRight(array, swapIndex, end);
+
+        quickSort(array, start, endLeft);
+        quickSort(array, startRight, end);
     }
 
-    private static void swap(int[] array, int i, int j) {
-        final int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
+    /** Skips numbers equal to array[i] to the left */
+    private static int skipRepeatedLeft(int[] array, int i, int limit) {
+
+        int key = array[i];
+
+        for (int j = i-1; j > limit; j--) {
+            if (array[j] != key) {
+                return j;
+            }
+        }
+
+        return limit;
+    }
+
+    /** Skips numbers equal to array[i] to the right */
+    private static int skipRepeatedRight(int[] array, int i, int limit) {
+
+        int key = array[i];
+
+        for (int j = i+1; j < limit; j++) {
+            if (array[j] != key) {
+                return j;
+            }
+        }
+
+        return limit;
     }
 }

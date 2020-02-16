@@ -40,7 +40,7 @@ public class MergeSort {
         // Actually, "Switching to insertion sort for small subarrays (length 15 or less, say) will improve the running time of a typical mergesort implementation by 10 to 15 percent (see Exercise 2.2.23).
         if (start == end-1) {
             if (array[end] < array[start])
-                swap(array, start, end);
+                Util.swap(array, start, end);
             return;
         }
 
@@ -74,12 +74,5 @@ public class MergeSort {
                 array[i] = aux[i2++];
             }
         }
-    }
-
-    private static void swap(int[] array, int i, int j) {
-        System.out.println("Swapping " + array[i] + " and " + array[j]);
-        final int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
     }
 }
